@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.otp {
+  font-family: 'Roboto', sans-serif;
+  @apply text-center border-gray-300 focus:border-ibps-600 text-2xl font-bold border border-2 rounded-lg outline-none select-none;
+}
+
+.label_text {
+  @apply text-gray-400 text-xs mb-0.5;
+}
+
+input,
+textarea {
+  @apply p-2 border border-gray-400 rounded-lg w-full;
+}
+
+.button_with_icon {
+  @apply flex items-center gap-2 bg-ibps-800 text-white px-4 py-2 rounded-lg;
+}
+
+.round_button_with_icon {
+  @apply flex items-center gap-2 border-2 border-ibps-800 text-ibps-800 px-4 py-2 rounded-full font-semibold;
+}
+
+.label_text {
+  @apply text-gray-400 text-xs mb-0.5;
+}
+
+input,
+textarea,
+select {
+  @apply p-2 border border-gray-400 rounded-lg w-full;
+}
+
+.button_with_icon {
+  @apply flex items-center gap-2 bg-ibps-800 text-white px-4 py-2 rounded-lg;
+}
+
+.round_button_with_icon {
+  @apply flex items-center gap-2 border-2 border-ibps-800 text-ibps-800 px-4 py-2 rounded-full font-semibold text-center;
+}
+
+.hr {
+  @apply h-0.5 w-20 bg-gray-300;
+}
+
+.txt {
+  @apply text-sm font-semibold rounded-xl text-center cursor-pointer;
+}
+
+.red_validation {
+  @apply text-xs pl-2 p-1 text-red-400;
+}
+
+.green_validation {
+  @apply text-xs pl-2 p-1 text-green-400;
+}
+
+
+/* Hide Arrows in Number Input */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
