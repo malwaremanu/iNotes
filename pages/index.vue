@@ -40,28 +40,30 @@ export default {
     };
   },
   mounted() {
-    this.load_tasks();
+    // this.load_tasks();
   },
   methods: {
     async load_tasks() {
-      const self = this;
+      // const self = this;
 
-      let bodyContent = JSON.stringify({
-        query: [],
-      });
+      // let bodyContent = JSON.stringify({
+      //   query: [],
+      // });
 
-      let response = await fetch(
-        this.$store.state.data.url + "mNotes_list/query",
-        {
-          method: "POST",
-          body: bodyContent,
-          headers: self.headersList,
-        }
-      );
+      // let response = await fetch(
+      //   this.$store.state.data.url + "mNotes_list/query",
+      //   {
+      //     method: "POST",
+      //     body: bodyContent,
+      //     headers: self.headersList,
+      //   }
+      // );
 
-      let data = await response.text();
+      // let data = await response.text();
+      // console.log(data);
+      data = await db.fetch();
       console.log(data);
-      self.tasks = JSON.parse(data);
+      // self.tasks = JSON.parse(data);
     },
 
     async post_task() {
