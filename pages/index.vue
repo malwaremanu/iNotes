@@ -1,25 +1,91 @@
 <template>
-  <div class="p-2 min-h-screen bg-ibps-900 mx-auto">
-    <div class="mt-14 lg:flex items-center gap-2 w-full mx-auto">
-      <Logo />
-      
-      <div class="lg:w-1/2">
-        <center class="p-2 flex flex-col gap-4 lg:w-3/4 mx-auto">
-          <nuxt-link to="/login?p=ibpstest">
-            <Buttonsecondary title="Login" />
-          </nuxt-link>
-          <nuxt-link to="/faq">
-            <Buttonsecondary title="FAQs" />
-          </nuxt-link>
-        </center>
-      </div>
-    </div>
-    <div class="text-center text-xs font-semibold py-8 text-white">
-        Ver 0.0.1  Beta
+  <div class="bg-gray-800 text-white">
+    <Header />
+
+    <ul class="p-3">
+      <li
+        v-for="task in tasks?.items"
+        :key="task?.key"
+        class="py-3 px-4 border border-gray-900 rounded-xl bg-gray-700"
+      >
+        <div>{{ task.title }}</div>
+        <div class="text-xs text-gray-300">{{ task.content }}</div>
+      </li>
+    </ul>
+
+    <div @click="load_tasks">Click here to load notes.</div>
+
+    <div class="p-3 bg-gray-800">
+      <input
+        type="text"
+        class="px-4 py-2 bg-gray-700 appearance-none text-white"
+      />
+      <button class="px-4 py-2 bg-gray-700 text-white">Submit</button>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      tasks: {
+        items: [],
+      },
+      url: this.$store.state,
+      headersList: {
+        "X-API-Key": this.$store.state.data.api_key,
+        "Content-Type": "application/json",
+      },
+    };
+  },
+  mounted() {
+    this.load_tasks();
+  },
+  methods: {
+    async load_tasks() {
+      const self = this;
+
+      let bodyContent = JSON.stringify({
+        query: [],
+      });
+
+      let response = await fetch(
+        this.$store.state.data.url + "mNotes_list/query",
+        {
+          method: "POST",
+          body: bodyContent,
+          headers: self.headersList,
+        }
+      );
+
+      let data = await response.text();
+      console.log(data);
+      self.tasks = JSON.parse(data);
+    },
+
+    async post_task() {
+      let bodyContent = JSON.stringify({
+        items: [
+          {
+            title: "This is some title",
+            content: "This is some content",
+          },
+        ],
+      });
+
+      let response = await fetch(
+        this.$store.state.data.url + "mNotes_list/items",
+        {
+          method: "PUT",
+          body: bodyContent,
+          headers: self.headersList,
+        }
+      );
+
+      let data = await response.text();
+      console.log(data);
+    },
+  },
+};
 </script>

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "search",
+    "path": "/search",
+    "component": "/project/iNotes/pages/search.vue",
+    "chunkName": "pages/search",
+    "_name": "_98135c9a"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/project/iNotes/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_0043da97"
+  }
+]
