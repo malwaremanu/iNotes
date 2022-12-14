@@ -1,5 +1,5 @@
 export const state = () => ({
-  url: "https://database.deta.sh/v1/c0qm30mo/",
+  url: "https://test_db_sm.deta.dev/",
   api_key: "c0qm30mo_41yLNivjJxRLRnfVe8rs9npm1bMDcm9D",
   user_data: {},
 });

@@ -33,10 +33,6 @@ export default {
         items: [],
       },
       url: this.$store.state,
-      headersList: {
-        "X-API-Key": this.$store.state.data.api_key,
-        "Content-Type": "application/json",
-      },
     };
   },
   mounted() {
@@ -44,25 +40,13 @@ export default {
   },
   methods: {
     async load_tasks() {
-      // const self = this;
+      let response = await fetch("https://db.suryamines.com/q/iNotes", {
+        method: "GET",
+      });
 
-      // let bodyContent = JSON.stringify({
-      //   query: [],
-      // });
-
-      // let response = await fetch(
-      //   this.$store.state.data.url + "mNotes_list/query",
-      //   {
-      //     method: "POST",
-      //     body: bodyContent,
-      //     headers: self.headersList,
-      //   }
-      // );
-
-      // let data = await response.text();
-      // console.log(data);
-      data = await db.fetch();
+      let data = await response.text();
       console.log(data);
+
       // self.tasks = JSON.parse(data);
     },
 
